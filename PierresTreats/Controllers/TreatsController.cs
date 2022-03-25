@@ -47,22 +47,20 @@ namespace PierresTreats.Controllers
     }
 
     [AllowAnonymous]
-    public JsonResult Details(int id)
+    public ActionResult Details(int id)
     {
       IEnumerable<Treat> thisTreat = new List<Treat>();
-      thisTreat = _db.Treats.Where(b => b.TreatId == id).Select(x =>
+      thisTreat = _db.Treats.Where(t => t.TreatId == id).Select(x =>
                   new Treat()
                   {
                     Name = x.Name,
                     TreatId = x.TreatId,
                     Calories = x.Calories,
-                    Cost = x.Cost,
+                    Cost = x.Cost
                   });
-      var listOfJoins = _db.FlavorTreat.ToList().Where(b => b.TreatId == id);
-      // Console.WriteLine("First: " + listOfJoins.Count());
+      var listOfJoins = _db.FlavorTreat.ToList().Where(t => t.TreatId == id);
       var listOfFlavors = new List<Flavor>{};
       foreach (var join in listOfJoins) {
-        // Console.WriteLine("Second: " + join.Flavor.Name);
         listOfFlavors.Add(
               new Flavor() 
               {

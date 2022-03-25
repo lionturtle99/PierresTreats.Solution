@@ -2,55 +2,37 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <name>@ViewBag.PageName</name>
+    <title>@ViewBag.PageName</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="~/css/styles.css">
   </head>
   <body>
-    @* <div class="navbar">
-      <nav>
-        <img src="~/img/logo.png" alt="logo" class="logo">
-        <ul>
-          <li class="logo-name">Treats Galore</li>
-          <li><a href="/">HOME</a></li>
-          <li><a href="/Treats">Treats</a></li>
-          <li><a href="/Flavors">Flavors</a></li>
-          <li><a href="/Account">LOGIN</a></li>
-          <li><a href="/Account">REGISTER</a></li>
-        </ul>
-      </nav>
-    </div> *@
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Treats">Treats</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Flavors">Flavors</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Account">Login/out</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Pierre's Treats</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="~/Treats/Index">Treats</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="~/Flavors/Index">Flavors</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="~/Account/Index">Log in/out</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <div class="container">
       <div class="h-100 p-5 text-white bg-dark rounded-3 text-center">
       <h1>Welcome to the community PierresTreats</h1>

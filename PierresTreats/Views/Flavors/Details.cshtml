@@ -9,11 +9,11 @@
 
 @if(@Model.JoinEntities.Count == 0)
 {
-  <p>This Flavor hasn't rented any Treats</p>
+  <p>No treats are using this flavor</p>
 }
 else
 {
-  <h4>Categories the Flavor belongs to:</h4>
+  <h4>Treats with this flavor</h4>
   <ul>
   @foreach(var join in Model.JoinEntities)
   {
@@ -30,4 +30,3 @@ else
 <p>@Html.ActionLink("Back to list", "Index")</p>
 <p>@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId })</p>
 <p>@Html.ActionLink("Delete Flavor", "Delete", new { id = Model.FlavorId })</p>
-<p>@Html.ActionLink("Add a Treat", "AddTreat", new { id = Model.FlavorId })</p>

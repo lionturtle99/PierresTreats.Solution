@@ -4,7 +4,7 @@
 
 @model PierresTreats.Models.Flavor
 
-<h4>Edit this task: @Html.DisplayFor(model => model.Name)</h4>
+<h4>Edit this flavor: @Html.DisplayFor(model => model.Name)</h4>
 
 @using (Html.BeginForm())
 {
@@ -12,9 +12,6 @@
 
     @Html.LabelFor(model => model.Name)
     @Html.EditorFor(model => model.Name)
-
-    @Html.Label("Select Treat")
-    @Html.DropDownList("TreatId")
 
     <input type="submit" value="Save" />
 }
