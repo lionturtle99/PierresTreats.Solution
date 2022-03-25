@@ -1,0 +1,84 @@
+@{
+  Layout = "_Layout";
+}
+
+@using PierresTreats.Models;
+@model List<PierresTreats.Models.Treat>;
+<script src="~/js/Index.js"></script>
+<h1>Pierre's Treats</h1>
+
+<div class="row">
+  <div class="col-md-6 col-sm-12">
+    @foreach (Treat treat in Model)
+    {
+      <button class="btn btn-secondary my-1" id=@treat.TreatId-name>@treat.Name</button>
+      <br>
+      <script>
+        getDetailsOfTreat(@treat.TreatId);
+      </script>
+    }
+  </div>
+  <div class="col-md-6 col-sm-12">
+    <div class="card" id="detailsCard" style="display:none;">
+      <div class="card-header text-dark text-center">
+        <h2 id="treatName"></h2>
+        <input type="text" style="display:none;" id="treatNameInput" class="form-control">
+        <button id="submitNameChange" class="btn btn-dark" style="display:none;">Submit change</button>
+        <input type="hidden" id="treatId">
+
+      </div>
+      <div class="card-body">
+        <div class="card-text text-dark text-center">
+          Calories: <span id="treatCalories"></span>
+          <br>
+          Cost: $<span id="treatCost"></span>
+          <br>
+          Flavors:
+          <ul class="list-group list-group-horizontal" id="listOfFlavors">
+
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer text-center">
+        <button type="button" class="btn btn-dark" id="buyButtonShowModal" data-bs-toggle="modal" data-bs-target="#buyModal">
+          Buy
+        </button>
+        <button class="btn btn-dark" type="button" id="delete">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+
+</script>
+<script>
+
+</script>
+<div class="modal fade" id="buyModal" tabindex="-1" aria-labelledby="buyModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-name" id="buyModalLabel">Modal name</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <select id="patronList">
+
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="rentTreat">Buy This Treat</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+
+</script>
+<script>
+
+</script>
+<p>@Html.ActionLink("Add new treat", "Create")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+<script src="~/js/Index.js"></script>

@@ -17,7 +17,7 @@ else
   <ul>
   @foreach(var join in Model.JoinEntities)
   {
-    <li>@join.Treat.Title</li>
+    <li>@join.Treat.Name</li>
     @using (Html.BeginForm("DeleteTreat", "Flavors"))
     {
       @Html.Hidden("joinId", @join.FlavorTreatId)

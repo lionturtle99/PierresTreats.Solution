@@ -28,12 +28,12 @@ namespace PierresTreats.Controllers
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);
       var userFlavors = _db.Flavors.Where(entry => entry.User.Id == currentUser.Id).ToList();
-      ViewBag.PageTitle = "Flavors";
+      ViewBag.PageName = "Flavors";
       return View(userFlavors);
     }
     public ActionResult Create()
     {
-      ViewBag.PageTitle = "Create a Flavor";
+      ViewBag.PageName = "Create a Flavor";
       return View();
     }
 
@@ -50,7 +50,7 @@ namespace PierresTreats.Controllers
 
     public ActionResult Details(int id)
     {
-      ViewBag.PageTitle = "Flavor details";
+      ViewBag.PageName = "Flavor details";
       var thisFlavor = _db.Flavors
         .Include(Flavor => Flavor.JoinEntities)
         .ThenInclude(join => join.Treat)
@@ -59,7 +59,7 @@ namespace PierresTreats.Controllers
     }
     public ActionResult Edit(int id)
     {
-      ViewBag.PageTitle = "Edit Flavor Details";
+      ViewBag.PageName = "Edit Flavor Details";
       var thisFlavor = _db.Flavors.FirstOrDefault(Flavor => Flavor.FlavorId == id);
       return View(thisFlavor);
     }
@@ -76,7 +76,7 @@ namespace PierresTreats.Controllers
       var thisFlavor = _db.Flavors.FirstOrDefault(Flavor => Flavor.FlavorId == id);
       // ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
       ViewBag.Treats = _db.Treats.ToList();
-      ViewBag.PageTitle = ("Rent a Treat for " + thisFlavor.Name);
+      ViewBag.PageName = ("Buy a Treat for " + thisFlavor.Name);
       return View(thisFlavor);
     }
     [HttpPost]
@@ -93,7 +93,7 @@ namespace PierresTreats.Controllers
     {
       
       var thisFlavor = _db.Flavors.FirstOrDefault(Flavor => Flavor.FlavorId == id);
-      ViewBag.PageTitle = "Delete Flavor";
+      ViewBag.PageName = "Delete Flavor";
       return View(thisFlavor);
     }
     [HttpPost, ActionName("Delete")]
@@ -107,7 +107,7 @@ namespace PierresTreats.Controllers
     [HttpPost]
     public ActionResult DeleteTreat (int joinId)
     {
-      ViewBag.PageTitle = "Remove Treats";
+      ViewBag.PageName = "Remove Treats";
       var joinEntry = _db.FlavorTreat.FirstOrDefault(entry => entry.FlavorTreatId == joinId);
       _db.FlavorTreat.Remove(joinEntry);
       _db.SaveChanges();
