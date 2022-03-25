@@ -1,0 +1,49 @@
+@{
+    Layout = "_Layout";
+}
+
+<h2>Authentication with Identity</h2>
+<hr />
+<div class="margin">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p>Hello @User.Identity.Name!</p>
+        @using (Html.BeginForm("LogOff", "Account"))
+        {
+            <input type="submit" class="btn btn-default" value="Log out" />
+        }
+    }
+    else
+    {
+        <p>@Html.ActionLink("Register", "Register")</p>
+        <p>@Html.ActionLink("Log in", "Login")</p>
+    }
+</div>
+
+<div class="modal fade show" id="loggedInModal" tabindex="-1" aria-labelledby="loggedInModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loggedInModalLabel">Congratulations you're all signed up</h5>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        if (@ViewBag.IsLoggedIn === true) {
+            $('#loggedInModal').modal('show');
+            setTimeout(function(){
+                $('#loggedInModal').modal('hide')
+            }, 3000);
+        }
+    });
+</script>
+

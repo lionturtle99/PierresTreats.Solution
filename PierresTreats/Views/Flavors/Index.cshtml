@@ -1,0 +1,26 @@
+@{
+  Layout = "_Layout";
+}
+
+@using PierresTreats.Models;
+@model IEnumerable<PierresTreats.Models.Flavor>
+
+<h2>Flavors for @User.Identity.Name</h2>
+
+@if (Model.Any())
+{
+  <ul>
+    @foreach (Flavor Flavor in Model)
+    {
+      <li>@Html.ActionLink($"{Flavor.Name}", "Details", new { id = Flavor.FlavorId })</li>
+    }
+  </ul>
+} 
+else
+{
+  <h3>No Flavors have been added yet!</h3>
+}
+
+<p>@Html.ActionLink("Add new Flavor", "Create")</p>
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
