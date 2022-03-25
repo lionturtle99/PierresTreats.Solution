@@ -16,7 +16,7 @@ function getDetailsOfTreat(treatId) {
         $("#listOfFlavors").empty();
         for (let x = 0; x < result.listOfFlavors.$values.length; x++) {
 
-          $("#listOfFlavors").append(`<li class="list-group-item"><div class="row"><div class="col-8">${result.listOfFlavors.$values[x].name}</div><div class="col-4" style="font-size: 30px;"><span id="remove-${result.listOfFlavors.$values[x].patronId}-from-${result.thisTreat.treatId}">⊠</span></div></div></li>`);
+          $("#listOfFlavors").append(`<li class="list-group-item"><div class="row"><div class="col-8">${result.listOfFlavors.$values[x].name}</div><div class="col-4" style="font-size: 30px;"><span id="remove-${result.listOfFlavors.$values[x].flavorId}-from-${result.thisTreat.treatId}">⊠</span></div></div></li>`);
         }
         $("#detailsCard").show();
       },
@@ -48,7 +48,6 @@ $("#submitNameChange").click(function () {
       $("#treatName").show();
       $("#" + $("#treatId").val() + "-name").html($("#treatNameInput").val());
       $("#treatNameInput").val("");
-      console.log(response.message);
     },
     error: function () {
       alert(`Error while updating ${$("#treatNameInput").val()}`);
@@ -68,39 +67,54 @@ $("#delete").click(function() {
     error: function() {
       alert(`Error while deleting ${$("#treatNameInput").val()}`);
     }
-  })
-})
+  });
+});
 
-$("#rentButtonShowModal").click(function() {
-  $("#patronList").empty();
+$("#addFlavorButtonShowModal").click(function() {
+  $("#flavorList").empty();
   $.ajax({
     type: "GET",
-    url: '../../Treats/GetPatrons',
+    url: '../../Treats/GetFlavors',
     success: function (response) {
       for (let x = 0; x < response.$values.length; x++) {
-        $("#patronList").append(
-          `<option value="${response.$values[x].patronId}">${response.$values[x].name}</option>`
+        $("#flavorList").append(
+          `<option value="${response.$values[x].flavorId}">${response.$values[x].name}</option>`
         );
       }
     },
     error: function() {
-      alert(`Error while fetching patrons`);
+      alert(`Error while fetching flavors`);
     }
   });
 });
 
-$("#rentTreat").click(function() {
+$("#Treat").click(function() {
   $.ajax({
     type: "POST",
-    url: '../../Treats/RentToPatron',
-    data: { 'treatId':$("#treatId").val(), 'patronId':$("#patronList").val()},
+    url: '../../Treats/AddFlavor',
+    data: { 'treatId':$("#treatId").val(), 'flavorId':$("#flavorList").val()},
     success: function (response) {
-      // $("#listOfFlavors").append(`<li class="list-group-item">${response.thisPatron.name}</li>`);
-      $("#listOfFlavors").append(`<li class="list-group-item"><div class="row"><div class="col-8">${response.thisPatron.name}</div><div class="col-4" style="font-size: 30px;"><span id="remove-${response.thisPatron.patronId}-from-${$("#treatId").val()}">⊠</span></div></div></li>`);
-      $("#rentModal").modal('hide');
+      // $("#listOfFlavors").append(`<li class="list-group-item">${response.thisFlavor.name}</li>`);
+      $("#listOfFlavors").append(`<li class="list-group-item"><div class="row"><div class="col-8">${response.thisFlavor.name}</div><div class="col-4" style="font-size: 30px;"><input type="hidden" id="remove-${response.thisFlavor.FlavorId}-from-${$("#treatId").val()}"><span id="remove-flavor">⊠</span></div></div></li>`);
+      $("#Modal").modal('hide');
     },
     error: function() {
-      alert(`Error while renting ${$("#treatNameInput").val()}`);
+      alert(`Error while ing ${$("#treatNameInput").val()}`);
+    }
+  });
+});
+
+$("#remove-flavor").click(function() {
+  $.ajax({
+    type: "POST",
+    url: '../../Treats/DeleteFlavor',
+    data: { 'treatId':$("#treatId").val(), 'flavorId': $("#flavorId").val()},
+    success: function (response) {
+      $("#" + $("#flavorId").val() + "-name").remove();
+      $("#detailsCard").hide();
+    },
+    error: function() {
+      alert(`Error while deleting ${$("#flavorNameInput").val()}`);
     }
   });
 });

@@ -96,16 +96,17 @@ namespace PierresTreats.Controllers
       return Json(new { Message = message });
     }
 
-    public JsonResult GetFlavors()
+    public ActionResult GetFlavors()
     {
-      IEnumerable<Flavor> jsonFlavor = new List<Flavor>();
-      jsonFlavor = _db.Flavors.ToList().Select(x =>
+      Console.WriteLine("it made it");
+      IEnumerable<Flavor> jsonFlavors = new List<Flavor>();
+      jsonFlavors = _db.Flavors.ToList().Select(x =>
                   new Flavor()
                   {
                     Name = x.Name,
                     FlavorId = x.FlavorId
                   });
-      return Json(jsonFlavor);
+      return Json(jsonFlavors);
     }
 
     [HttpPost]
@@ -119,7 +120,16 @@ namespace PierresTreats.Controllers
       _db.SaveChanges();
       string message = "SUCCESS";
       return Json(new { Message = message, thisFlavor = thisFlavor });
-      // return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public ActionResult DeleteFlavor (int joinId)
+    {
+      ViewBag.PageTitle = "Remove flavor";
+      var joinEntry = _db.FlavorTreat.FirstOrDefault(entry => entry.FlavorTreatId == joinId);
+      _db.FlavorTreat.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
 
   }
