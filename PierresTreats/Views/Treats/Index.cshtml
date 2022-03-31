@@ -5,7 +5,7 @@
 @using PierresTreats.Models;
 @model List<PierresTreats.Models.Treat>;
 <script src="~/js/Index.js"></script>
-<h1>Pierre's Treats</h1>
+<h2>Pierre's Treats</h2>
 
 <div class="row">
   <div class="col-md-6 col-sm-12">
@@ -34,7 +34,6 @@
           <br>
           Flavors:
           <ul class="list-group list-group-horizontal" id="listOfFlavors">
-
           </ul>
         </div>
       </div>
@@ -47,6 +46,7 @@
     </div>
   </div>
 </div>
+
 <div class="modal fade" id="addFlavorModal" tabindex="-1" aria-labelledby="addFlavorModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -61,7 +61,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="Treat">Add flavor to treat</button>
+        <button type="button" class="btn btn-primary" id="addFlavorToTreat">Add flavor to treat</button>
       </div>
     </div>
   </div>

@@ -2,7 +2,7 @@
 
 #### By Liam Eller | [LinkedIn](https://www.linkedin.com/in/liamellerportland/) | [email](mailto:<liamthelastson@gmail.com>) | [website](https://lionturtle99.github.io/my-portfolio/)
 
-#### _A MVC application practicing Identity with CRUD functionality_
+#### _A web application where Pierre can keep track of his different treats and flavors and add them together to come up with tasty flavored treats_
 
 ## Technologies Used
 
@@ -19,7 +19,7 @@
 
 ## Description
 
-_A MVC application practicing Identity with CRUD functionality_
+_A MVC application practicing authentication with Identity, many-to-many relationships, and CRUD functionality_
 
 ## Setup/Installation Requirements
   

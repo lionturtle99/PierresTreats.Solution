@@ -26,7 +26,8 @@ namespace PierresTreats.Controllers
     [AllowAnonymous]
     public ActionResult Index()
     {
-      List<Treat> model = _db.Treats.OrderBy(b => b.Name).ToList();
+      // List<Treat> model = _db.Treats.Include(e => e.JoinEntities).ThenInclude(join => join.Flavor).OrderBy(t => t.Name).ToList();
+      List<Treat> model = _db.Treats.OrderBy(t => t.Name).ToList();
       return View(model);
     }
 
@@ -98,24 +99,23 @@ namespace PierresTreats.Controllers
 
     public ActionResult GetFlavors()
     {
-      Console.WriteLine("it made it");
-      IEnumerable<Flavor> jsonFlavors = new List<Flavor>();
-      jsonFlavors = _db.Flavors.ToList().Select(x =>
+      IEnumerable<Flavor> listOfFlavors = new List<Flavor>();
+      listOfFlavors = _db.Flavors.ToList().Select(x =>
                   new Flavor()
                   {
                     Name = x.Name,
                     FlavorId = x.FlavorId
                   });
-      return Json(jsonFlavors);
+      return Json(listOfFlavors);
     }
 
     [HttpPost]
-    public ActionResult AddFlavor(int FlavorId, int TreatId)
+    public ActionResult AddFlavor(int flavorId, int treatId)
     {
-      Flavor thisFlavor = _db.Flavors.FirstOrDefault(Treat => Treat.FlavorId == FlavorId);
+      Flavor thisFlavor = _db.Flavors.FirstOrDefault(f => f.FlavorId == flavorId);
       if (thisFlavor.FlavorId != 0)
       {
-        _db.FlavorTreat.Add(new FlavorTreat() {TreatId = TreatId, FlavorId = thisFlavor.FlavorId});
+        _db.FlavorTreat.Add(new FlavorTreat() {TreatId = treatId, FlavorId = thisFlavor.FlavorId});
       }
       _db.SaveChanges();
       string message = "SUCCESS";
@@ -123,13 +123,12 @@ namespace PierresTreats.Controllers
     }
 
     [HttpPost]
-    public ActionResult DeleteFlavor (int joinId)
+    public ActionResult RemoveFlavor(int treatId, int flavorId)
     {
-      ViewBag.PageTitle = "Remove flavor";
-      var joinEntry = _db.FlavorTreat.FirstOrDefault(entry => entry.FlavorTreatId == joinId);
+      var joinEntry = _db.FlavorTreat.FirstOrDefault(entry => entry.FlavorId == flavorId && entry.TreatId == treatId);
       _db.FlavorTreat.Remove(joinEntry);
       _db.SaveChanges();
-      return RedirectToAction("Index");
+      return Json(new { message = "success" });
     }
 
   }

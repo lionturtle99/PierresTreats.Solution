@@ -20,6 +20,7 @@ namespace PierresTreats.Controllers
     [HttpGet("/")]
     public ActionResult Index()
     {
+      ViewBag.PageName = "Pierre's Treats";
       return View();
     }
 
