@@ -2,8 +2,28 @@
   Layout = "_Layout";
 }
 
-<h3>Click on the menu options below to manage your order</h3>
+<h3>Click on the options below to manage Add new treats</h3>
 
+<div class="row">
+  <div class="col-6">
+    <h4>Treats</h4>
+    @foreach(var treat in ViewBag.Treats)
+    {
+      <div class="row">
+        <p>@Html.ActionLink($"{treat.Name}", "Index", "Treats", new { id = treat.TreatId })</p>
+      </div>
+    }
+  </div>
+  <div class="col-6">
+    <h4>Flavors</h4>
+    @foreach(var flavor in ViewBag.Flavors)
+    {
+      <div class="row">
+        <p>@Html.ActionLink($"{flavor.Name}", "Details", "Flavors", new { id = flavor.FlavorId })</p>
+      </div>
+    }
+  </div>
+</div>
 
 <div class="margin center">
   <p>@Html.ActionLink("View Treats", "Index", "Treats")</p>

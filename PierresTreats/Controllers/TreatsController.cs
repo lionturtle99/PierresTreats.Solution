@@ -12,7 +12,7 @@ using System;
 
 namespace PierresTreats.Controllers
 {
-  // [Authorize]
+  [Authorize]
   public class TreatsController : Controller
   {
     private readonly PierresTreatsContext _db;
@@ -26,13 +26,14 @@ namespace PierresTreats.Controllers
     [AllowAnonymous]
     public ActionResult Index()
     {
-      // List<Treat> model = _db.Treats.Include(e => e.JoinEntities).ThenInclude(join => join.Flavor).OrderBy(t => t.Name).ToList();
+      ViewBag.PageName = "Treats";
       List<Treat> model = _db.Treats.OrderBy(t => t.Name).ToList();
       return View(model);
     }
 
     public ActionResult Create()
     {
+      ViewBag.PageName = "Create a new Treat";
       return View();
     }
 

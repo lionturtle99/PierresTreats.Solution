@@ -61,7 +61,7 @@ namespace PierresTreats
       app.UseStaticFiles();
       app.Run(async (context) =>
       {
-        await context.Response.WriteAsync("404!");
+        await context.Response.WriteAsync("Sorry we received a 404! error");
       });
     }
   }

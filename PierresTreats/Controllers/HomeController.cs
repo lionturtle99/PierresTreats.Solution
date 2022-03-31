@@ -20,7 +20,8 @@ namespace PierresTreats.Controllers
     [HttpGet("/")]
     public ActionResult Index()
     {
-      ViewBag.PageName = "Pierre's Treats";
+      ViewBag.Treats = _db.Treats.OrderBy(t => t.Name).ToList();
+      ViewBag.Flavors = _db.Flavors.OrderBy(f => f.Name).ToList();
       return View();
     }
 

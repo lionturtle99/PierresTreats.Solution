@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 
-
 namespace PierresTreats.Models
 {
   public class PierresTreatsContextFactory : IDesignTimeDbContextFactory<PierresTreatsContext>
