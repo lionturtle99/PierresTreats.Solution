@@ -5,7 +5,7 @@
 @using PierresTreats.Models;
 @model IEnumerable<PierresTreats.Models.Flavor>
 
-<h2>Flavors added by @User.Identity.Name</h2>
+<h2 class="center margin">Flavors added by @User.Identity.Name</h2>
 
 @if (Model.Any())
 {
@@ -21,6 +21,6 @@ else
   <h3>No Flavors have been added yet!</h3>
 }
 
-<p>@Html.ActionLink("Add new Flavor", "Create")</p>
+<p class="btn btn-primary">@Html.ActionLink("Add new Flavor", "Create")</p>
 
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
+<p class="btn btn-primary">@Html.ActionLink("Home", "Index", "Home")</p>

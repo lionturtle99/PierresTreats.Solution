@@ -16,6 +16,6 @@
   @Html.LabelFor(model => model.Cost)
   @Html.TextBoxFor(model => model.Cost, new {@type="number", @class="form-control"})
 
-  <input type="submit" value="Add new treat" />
+  <input class="btn btn-info" type="submit" value="Add new treat" />
 }
-<p>@Html.ActionLink("Show all treats", "Index")</p>
+<p class="btn btn-primary">@Html.ActionLink("Show all treats", "Index")</p>

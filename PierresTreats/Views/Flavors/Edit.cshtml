@@ -4,7 +4,7 @@
 
 @model PierresTreats.Models.Flavor
 
-<h4>Edit this flavor: @Html.DisplayFor(model => model.Name)</h4>
+<h4 class="center margin">Edit this flavor: @Html.DisplayFor(model => model.Name)</h4>
 
 @using (Html.BeginForm())
 {
@@ -16,4 +16,4 @@
     <input type="submit" value="Save" />
 }
 
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<p class="btn btn-primary">@Html.ActionLink("Back to list", "Index")</p>

@@ -2,19 +2,25 @@ img {
   max-width: 8em;
   height: auto;
 }
-a.nav-link {
-  color: rgb(252, 116, 138)!important
-}
-nav.navbar {
-  background: linear-gradient(rgb(20, 122, 255), rgb(131, 230, 255), rgb(240, 254, 255))!important
-}
 a {
   text-decoration: none;
-  color:rgb(252, 116, 138);
+  color:rgb(0, 127, 149);
 }
 a:hover {
-  color: red!important;
+  color: rgb(71, 227, 255);
 }
-body {
-  background-color: rgb(228, 253, 255);
+p.btn-primary a {
+  color:rgb(255, 255, 255);
+}
+p.btn-primary a:hover {
+  color: rgb(206, 206, 206)!important;
+}
+.pointer {
+  cursor:pointer;
+}
+.center {
+  text-align: center;
+}
+.margin {
+  margin: 2em;
 }

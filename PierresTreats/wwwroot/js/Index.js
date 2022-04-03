@@ -15,8 +15,10 @@ function getDetailsOfTreat(treatId) {
         $("#treatNameInput").val(result.thisTreat.$values[0].name);
         $("#listOfFlavors").empty();
         for (let x = 0; x < result.listOfFlavors.$values.length; x++) {
-
-          $("#listOfFlavors").append(`<li class="list-group-item"><div class="row"><div class="col-8">${result.listOfFlavors.$values[x].name}</div><div class="col-4" style="font-size: 30px;"><span id="remove-${result.listOfFlavors.$values[x].flavorId}-from-${result.thisTreat.treatId}">⊠</span></div></div></li>`);
+          $("#listOfFlavors").append(`<li class="list-group-item"><div class="row"><div class="col-8">${result.listOfFlavors.$values[x].name}</div><div class="col-4" style="font-size: 30px;"><span class="pointer" id="remove-${result.listOfFlavors.$values[x].flavorId}-from-${result.thisTreat.$values[0].treatId}">⊠</span></div></div></li>
+          <script>
+            RemoveFlavorFromTreat(${result.listOfFlavors.$values[x].flavorId}, ${result.thisTreat.$values[0].treatId});
+          </script>`);
         }
         $("#detailsCard").show();
       },
@@ -65,7 +67,7 @@ $("#delete").click(function() {
     type: "POST",
     url: '../../Treats/Delete',
     data: { 'treatId':$("#treatId").val()},
-    success: function (response) {
+    success: function () {
       $("#" + $("#treatId").val() + "-name").remove();
       $("#detailsCard").hide();
     },
@@ -107,17 +109,18 @@ $("#addFlavorToTreat").click(function() {
     url: '../../Treats/AddFlavor',
     data: { 'treatId':$("#treatId").val(), 'flavorId':$("#flavorList").val()},
     success: function (response) {
-      $("#listOfFlavors").append(`<li class="list-group-item"><div class="row"><div class="col-8">${response.thisFlavor.name}</div><div class="col-4" style="font-size: 30px;"><span id="remove-${response.thisFlavor.flavorId}-from-${$("#treatId").val()}">⊠</span></div></div></li>
+      $("#listOfFlavors").append(`<li class="list-group-item"><div class="row"><div class="col-8">${response.thisFlavor.name}</div><div class="col-4" style="font-size: 30px;"><span class="pointer" id="remove-${response.thisFlavor.flavorId}-from-${$("#treatId").val()}">⊠</span></div></div></li>
       <script>
         RemoveFlavorFromTreat(${response.thisFlavor.flavorId}, ${$("#treatId").val()});
       </script>`);
-      $("#Modal").modal('hide');
+      $("#addFlavorModal").modal("hide");
     },
     error: function() {
       alert(`Error while adding flavor}`);
     }
   });
 });
+
 
 function RemoveFlavorFromTreat(flavorId, treatId) {
   $(`#remove-${flavorId}-from-${treatId}`).click(function() {
@@ -127,7 +130,6 @@ function RemoveFlavorFromTreat(flavorId, treatId) {
       data: { 'treatId':treatId, 'flavorId':flavorId },
       success: function () {
         $(`#remove-${flavorId}-from-${treatId}`).closest('li').remove();
-        alert("Successfully removed that flavor");
       },
       error: function() {
         if (response.status == 401) {

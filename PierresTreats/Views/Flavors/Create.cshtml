@@ -4,7 +4,7 @@
 
 @model PierresTreats.Models.Flavor
 
-<h4>Add a new PierresTreats member</h4>
+<h4 class="center margin">Add a new PierresTreats member</h4>
 
 @using (Html.BeginForm())
 {
@@ -13,4 +13,4 @@
 
     <input type="submit" value="Add new Flavor" class="btn btn-default" />
 }
-<p>@Html.ActionLink("Show all Flavor", "Index")</p>
+<p class="btn btn-primary">@Html.ActionLink("Show all Flavor", "Index")</p>

@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using PierresTreats.Models;
@@ -8,7 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using System.Security.Claims;
-using System;
 
 namespace PierresTreats.Controllers
 {
@@ -23,7 +21,6 @@ namespace PierresTreats.Controllers
       _userManager = userManager;
       _db = db;
     }
-    [AllowAnonymous]
     public ActionResult Index()
     {
       ViewBag.PageName = "Treats";
@@ -48,7 +45,6 @@ namespace PierresTreats.Controllers
       return RedirectToAction("Index");
     }
 
-    [AllowAnonymous]
     public ActionResult Details(int id)
     {
       IEnumerable<Treat> thisTreat = new List<Treat>();

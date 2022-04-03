@@ -5,7 +5,7 @@
 @model PierresTreats.Models.Flavor
 
 <hr />
-<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<h3 class="center margin">@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
 
 @if(@Model.JoinEntities.Count == 0)
 {
@@ -27,6 +27,6 @@ else
   </ul>
 }
 
-<p>@Html.ActionLink("Back to list", "Index")</p>
-<p>@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId })</p>
-<p>@Html.ActionLink("Delete Flavor", "Delete", new { id = Model.FlavorId })</p>
+<p class="btn btn-primary">@Html.ActionLink("Back to list", "Index")</p>
+<p class="btn btn-primary">@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId })</p>
+<p class="btn btn-primary">@Html.ActionLink("Delete Flavor", "Delete", new { id = Model.FlavorId })</p>
