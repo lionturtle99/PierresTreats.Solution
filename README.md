@@ -6,16 +6,18 @@
 
 ## Technologies Used
 
-* C#
 * html
-* Markdown
 * CSS
-* Razor
-* LINQ
-* Identity
-* Entity
+* Javascript
+* AJAX
+* C#
 * ASP .NET Core
 * ASP .NET Core MVC
+* Identity
+* Entity
+* Razor
+* LINQ
+
 
 ## Description
 
