@@ -1,6 +1,6 @@
 <h1 align="center">Pierre's Treats</h1>
 
-#### By Liam Eller | [LinkedIn](https://www.linkedin.com/in/liamellerportland/) | [email](mailto:<liamthelastson@gmail.com>) | [website](https://lionturtle99.github.io/my-Portfolio/)
+#### By Liam Eller | [LinkedIn](https://www.linkedin.com/in/liamellerportland/) | [email](mailto:<liamthelastson@gmail.com>) | [website](https://lionturtle99.github.io/Portfolio/)
 
 #### _A web application where Pierre can keep track of his different treats and flavors and add them together to come up with tasty flavored treats_
 
